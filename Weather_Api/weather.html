@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Something Important</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cursor glow -->
+  <div id="cursor"></div>
+
+  <!-- Floating hearts -->
+  <div class="hearts"></div>
+
+ <div class="container">
+  <div id="intro">
+    <h2 class="fade-in">I want to tell you something</h2>
+
+    <p class="line fade-in-delay">
+      I’ve been holding this in for a while.
+    </p>
+
+    <p class="line fade-in-delay-2">
+      Not because I was unsure,  
+      but because I didn’t know how to say it.
+    </p>
+
+    <button id="nextBtn" class="main-btn fade-in-delay-3">
+      Tell me
+    </button>
+  </div>
+
+  <div id="message" class="hidden">
+    <p class="love glow heartbeat">
+      I LOVE YOU SO MUCH
+    </p>
+
+    <p class="name">
+      A <span class="blur">_ _ _ _ _</span> I
+    </p>
+
+    <p class="small">
+      Some letters are kept incomplete on purpose for name security but You know I made it for You only.
+    </p>
+
+    <br>
+
+    <p>Go on next Page Please</p>
+
+    <!-- Continue button always visible now -->
+    <button id="continueBtn" class="main-btn" onclick="goAbout()">
+      Continue
+    </button>
+  </div>
+</div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
