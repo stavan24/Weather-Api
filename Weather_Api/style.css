@@ -1,4 +1,4 @@
-/* ===== General Styles ===== */
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
@@ -6,120 +6,156 @@
   font-family: monospace;
 }
 
+html {
+  font-size: 19px;
+}
+
 body {
   background: radial-gradient(circle at top, #2a0f1f, #020617);
   color: #f8e8ee;
   min-height: 100vh;
   overflow: hidden;
+  animation: bgMove 10s infinite alternate;
+}
+
+@keyframes bgMove {
+  from { background-position: top; }
+  to { background-position: bottom; }
 }
 
 /* ===== Cursor Glow ===== */
 #cursor {
   position: fixed;
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,105,180,0.35), transparent 60%);
+  background: radial-gradient(circle, rgba(255,105,180,0.5), transparent 70%);
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 0;
+  transition: 0.1s;
 }
 
 /* ===== Container ===== */
 .container {
   min-height: 100vh;
-  padding: 24px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 22px;
   text-align: center;
-  gap: 18px;
   position: relative;
   z-index: 1;
 }
 
-/* ===== Text ===== */
+/* ===== Typography ===== */
 h2 {
-  font-size: 2.2rem;
+  font-size: 3.2rem;
+  letter-spacing: 2px;
 }
 
 .line {
-  font-size: 1rem;
-  opacity: 0.85;
-  max-width: 420px;
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 520px;
+  line-height: 1.6;
 }
 
 .small {
-  font-size: 0.8rem;
-  opacity: 0.6;
-  margin-top: 6px;
+  font-size: 1rem;
+  opacity: 0.7;
 }
 
-/* ===== Buttons ===== */
+.love {
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+}
+
+.glow {
+  text-shadow: 0 0 15px #ff8ccf, 0 0 30px #ff5fa2;
+}
+
+/* ===== Button ===== */
 .main-btn {
-  margin-top: 10px;
-  padding: 10px 26px;
+  margin-top: 12px;
+  padding: 14px 36px;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px;
   background: linear-gradient(135deg, #ff5fa2, #ff8ccf);
   color: #020617;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .main-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(255,105,180,0.5);
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 15px 40px rgba(255,105,180,0.6);
 }
 
-/* ===== Love Text ===== */
-.love {
-  font-size: 22px;
-  letter-spacing: 3px;
+/* ===== Big Reveal (MAIN MOMENT) ===== */
+.big-reveal {
+  font-size: 3.8rem;
+  letter-spacing: 10px;
+  text-shadow: 0 0 25px #ff8ccf, 0 0 60px #ff5fa2;
+  animation: scaleIn 1s ease forwards;
 }
 
-.glow {
-  text-shadow: 0 0 10px #ff8ccf;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+/* ===== Heartbeat ===== */
 .heartbeat {
   animation: beat 1.5s infinite;
 }
 
 @keyframes beat {
   0%,100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.1); }
 }
 
-/* ===== Name Reveal ===== */
-.name {
-  margin-top: 8px;
-  letter-spacing: 6px;
-  font-size: 1.1rem;
-}
-
-
-
-/* ===== Hidden / Animations ===== */
+/* ===== Fade Animations ===== */
 .hidden {
   display: none;
 }
 
-.fade-in { animation: fadeIn 1s forwards; }
-.fade-in-delay { animation: fadeIn 1.5s forwards; }
-.fade-in-delay-2 { animation: fadeIn 2s forwards; }
-.fade-in-delay-3 { animation: fadeIn 2.5s forwards; }
-.fade-in-delay-4 { animation: fadeIn 3s forwards; }
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in-delay {
+  animation: fadeIn 1.5s forwards;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 2s forwards;
+}
+
+.fade-in-delay-3 {
+  animation: fadeIn 2.5s forwards;
+}
+
+.fade-in-delay-4 {
+  animation: fadeIn 3s forwards;
+}
 
 .fade-out-message {
   animation: fadeOutMessage 1s forwards;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeOutMessage {
@@ -135,12 +171,32 @@ h2 {
   top: 100%;
   left: 0;
   text-align: center;
-  font-size: 18px;
-  opacity: 0.15;
+  font-size: 22px;
+  opacity: 0.2;
   animation: floatHearts 10s linear infinite;
 }
 
 @keyframes floatHearts {
   from { transform: translateY(0); }
   to { transform: translateY(-120vh); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 2.3rem;
+  }
+
+  .line {
+    font-size: 1.1rem;
+  }
+
+  .big-reveal {
+    font-size: 2.5rem;
+    letter-spacing: 6px;
+  }
 }
