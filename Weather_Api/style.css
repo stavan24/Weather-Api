@@ -202,9 +202,7 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 18px; /* increase base size for mobile */
-  }
+  
   
   h2 {
     font-size: 2.5rem;
